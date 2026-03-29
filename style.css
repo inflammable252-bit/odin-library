@@ -30,7 +30,7 @@ div.mobile-frame {
     border: 5px solid rgb(73, 73, 73);
     border-radius: 16px;
     display: grid;
-    grid-template-rows: [top] minmax(auto, 0.5fr) [card-start] 2.25fr [card-end] 1fr;
+    grid-template-rows: [top] minmax(auto, 0.5fr) [card-start] 2.75fr [card-end] 1fr;
 }
 header {
     justify-items: center;
@@ -78,4 +78,48 @@ article.card {
 
 #page-wrapper {
     height:fit-content;
+}
+
+section#bottom {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 0.4fr 1fr 1.25fr;
+}
+
+#bottom-left {
+    grid-column: 2/3;
+    display: flex;
+    flex-direction: column;
+}
+#bottom-left button {
+    background-color: var(--theme-accent);
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    font-size: 1.7rem;
+    max-width: 10ch;
+    min-height: content;
+    border: 0px;
+    border-radius: 20px;
+    flex: 0 auto;
+}
+.add-drawer {
+    grid-column: -2/-1;
+    padding: 10px;
+    background-color: white;
+    p {
+        display: inline-block;
+    }
+
+    input {
+        border-radius: 12px;
+        display: block;
+    } 
+}
+details[open] {
+    position: relative;
+    scale: 1.5;
+    transition: scale 0.5s;
+    right: 100px;
+    bottom: 100px;
 }
