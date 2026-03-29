@@ -6,7 +6,7 @@
 }
 
 * {
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
 }
 
 
@@ -51,6 +51,8 @@ div#card-wrapper {
     align-items: center;
 }
 article.card {
+    border: 1px solid black;
+    border-radius: 6px;
     height: 275px;
     width: 250px;
     display: flex;
@@ -69,12 +71,21 @@ article.card {
         font-weight: 600;
     }
     p:nth-child(3) {
+        font-size: 0.9rem;
+        font-weight: 400;
+    }
+    p:last-child {
         margin-top: auto;
     }
     p.not-read {
         color: red;
     }
+    transition: transform 0.4s ease-in-out;
 }
+
+.card:hover, .card:active {
+        transform: scale(1.4);
+    }
 
 #page-wrapper {
     height:fit-content;
@@ -116,10 +127,10 @@ section#bottom {
         display: block;
     } 
 }
-details[open] {
+/* details[open] {
     position: relative;
     scale: 1.5;
     transition: scale 0.5s;
     right: 100px;
     bottom: 100px;
-}
+} */

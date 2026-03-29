@@ -36,6 +36,9 @@ function updateCards() {
         bookAuthor=document.createElement("p");
         bookAuthor.textContent=item.author;
         book.appendChild(bookAuthor);
+        pageCount=document.createElement("p");
+        pageCount.textContent=`${item.pages} pages`;
+        book.appendChild(pageCount)
         readStatus=document.createElement("p");
         readStatus.textContent=item.read;
             if (item.read==="read") {
