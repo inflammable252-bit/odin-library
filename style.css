@@ -122,26 +122,24 @@ section#bottom {
        content: "";
     }
     p {
+        color: #FFF;
         padding: 20px;
         font-size: 1.5rem;
         background-color: var(--theme-accent);
-        color: white;
         border-radius: 20px;
+    }
+    span:nth-child(2){
+       display: none;
     }
     grid-column: -2/-1;
     padding: 10px;
     background-color: white;
-    p {
-        display: inline-block;
-    }
-
     input {
         border-radius: 12px;
         display: block;
     }
 }
 .add-drawer::details-content {
-    transition: 0.3s ease;
     height: 0;
     overflow: clip;
 }
@@ -153,10 +151,18 @@ section#bottom {
 
 details[open] {
     p {
-        transition: 0.2s;
+        display: inline-block;
         font-size: 1rem;
         padding: 5px;
         width: 34ch;
         text-align: center;
+        opacity: 100%;
+        transition: 0.3s;
+    }
+    span:first-child {
+        display: none;
+    }
+    span:nth-child(2) {
+        display: inline-block;
     }
 }
