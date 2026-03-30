@@ -10,6 +10,7 @@ function Book(title, author, pages, read, note) {
     this.pages = pages;
     this.read = read;
     this.note = note;
+    this.hslAngle= Math.floor(Math.random()*361);
     this.info = `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}. Note: "${note}". ID: ${this.id}`
 }
 function addBookToLibrary(title, author, pages, read, note) {
@@ -48,11 +49,11 @@ function updateCards() {
                 readStatus.className="not-read"
             }
         book.appendChild(readStatus);
-
+        
+        book.style.backgroundColor=`hsl(${item.hslAngle}, 50%, 75%)`;
         cardSection.appendChild(book);
     })
 }
-
 function rightPage(a, b) {
     a =+ 5;
     b =+ 5;

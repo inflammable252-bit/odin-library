@@ -51,7 +51,7 @@ div#card-wrapper {
     align-items: center;
 }
 article.card {
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 6px;
     height: 275px;
     width: 250px;
