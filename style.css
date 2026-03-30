@@ -84,7 +84,7 @@ article.card {
 }
 
 .card:hover, .card:active {
-        transform: scale(1.4);
+        transform: scale(1.2);
     }
 
 #page-wrapper {
@@ -94,13 +94,14 @@ article.card {
 section#bottom {
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 0.4fr 1fr 1.25fr;
+    grid-template-columns: 0.4fr 0.75fr 1.25fr;
 }
 
 #bottom-left {
     grid-column: 2/3;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 #bottom-left button {
     background-color: var(--theme-accent);
@@ -109,12 +110,24 @@ section#bottom {
     margin: 5px;
     font-size: 1.7rem;
     max-width: 10ch;
-    min-height: content;
     border: 0px;
     border-radius: 20px;
     flex: 0 auto;
+    
 }
 .add-drawer {
+    justify-items: center;
+    align-self: center;
+    ::marker {
+       content: "";
+    }
+    p {
+        padding: 20px;
+        font-size: 1.5rem;
+        background-color: var(--theme-accent);
+        color: white;
+        border-radius: 20px;
+    }
     grid-column: -2/-1;
     padding: 10px;
     background-color: white;
@@ -125,12 +138,25 @@ section#bottom {
     input {
         border-radius: 12px;
         display: block;
-    } 
+    }
 }
-/* details[open] {
-    position: relative;
-    scale: 1.5;
-    transition: scale 0.5s;
-    right: 100px;
-    bottom: 100px;
-} */
+.add-drawer::details-content {
+    transition: 0.3s ease;
+    height: 0;
+    overflow: clip;
+}
+
+[open]::details-content {
+    height: auto;
+    transition: 0.3s ease;
+}
+
+details[open] {
+    p {
+        transition: 0.2s;
+        font-size: 1rem;
+        padding: 5px;
+        width: 34ch;
+        text-align: center;
+    }
+}
