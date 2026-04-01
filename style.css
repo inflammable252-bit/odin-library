@@ -89,6 +89,19 @@ article.card {
 
 #page-wrapper {
     height:fit-content;
+    display: flex;
+    margin: 6px;
+    #previous {
+        transform: rotate(180deg);
+    }
+    #pageNumber {
+        margin: 0px 14px;
+        font-size: 1.2rem;
+    }
+    img {
+        height: 25px;
+        width:  25px;
+    }
 }
 
 section#bottom {
@@ -197,6 +210,7 @@ details[open] {
         font-size: 1.25rem;
         color: white;
         padding: 5px;
+        margin: 15px 10px;
         width: 15ch;
     }
 }
