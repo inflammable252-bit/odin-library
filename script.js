@@ -56,7 +56,7 @@ function updateCards() {
 
     bookNote=document.createElement("p");
     bookNote.classList.add("note");
-    bookNote.textContent=item.note;
+    bookNote.textContent=`"${item.note}"`;
     book.appendChild(bookNote);
 
     readStatus=document.createElement("p");
@@ -80,10 +80,20 @@ const pageDisplay = document.getElementById("pageNumber");
 const previousButton = document.getElementById("previous");
 const nextButton = document.getElementById("next");
 const pageButtons = document.getElementById("page-wrapper");
+const noteToggle = document.getElementById("toggle-notes")
 
 pageButtons.addEventListener("click", () => {
-    (event.target.id==="previous") ? toPreviousPage() : toNextPage();
-    
+    switch (event.target.id) {
+        case "previous":
+            toPreviousPage();
+            break
+        case "next":
+            toNextPage();
+            break;
+        case "toggle-notes":
+            toggleNotes();
+            break;
+    }
     function toPreviousPage() {
         leftPage();
         updatePage();
@@ -96,6 +106,13 @@ pageButtons.addEventListener("click", () => {
     }
     function updatePage() {
         pageDisplay.textContent = cardPage;
+    }
+    function toggleNotes() {
+        cardSection.classList.toggle("toggle-notes");
+        // const allBooks = document.querySelectorAll("article.card");
+        // allBooks.forEach((card) => {
+        //     card.classList.toggle("show-note");
+        // })
     }
 })
 

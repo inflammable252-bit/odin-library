@@ -36,6 +36,8 @@ header {
     justify-items: center;
 }
 main {
+    display: grid;
+    grid-template-rows: 1fr auto;
     background-color: rgb(253, 222, 236);
     justify-items: center;
     align-content: center;
@@ -51,7 +53,6 @@ div#card-wrapper {
     align-items: center;
 }
 article.card {
-
     border: 2px solid black;
     border-radius: 6px;
     height: 260px;
@@ -78,7 +79,12 @@ article.card {
         font-weight: 400;
     }
     p.note {
-        
+        opacity: 0;
+        position: relative;
+        right: -75px;
+        color: #3f3f3f;
+        margin-top: auto;
+        transition: 0.2s ease;
     }
     p:last-child {
         margin-top: auto;
@@ -92,13 +98,24 @@ article.card {
 .card:hover, .card:active, .card:focus {
         transform: scale(1.2);
         p.note {
-            display: inline-block;
+            position: relative;
+            right: 0;
+            opacity: 1;
+            transition: 0.2s ease;
         }
     }
+
+#card-wrapper.toggle-notes article.card p.note {
+    position: relative;
+    right: 0;
+    opacity: 1;
+}
 
 #page-wrapper {
     height:fit-content;
     display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 6px;
     #previous {
         transform: rotate(180deg);
@@ -109,8 +126,18 @@ article.card {
     }
     img {
         height: 25px;
-        width:  25px;
+        width: 25px;
     }
+}
+
+button#toggle-notes {
+    position: absolute;
+    left: 66%;
+    background-color: var(--theme-accent);
+    color: #FFF;
+    border-style: none;
+    border-radius: 8px;
+    padding: 2px 14px;
 }
 
 section#bottom {
