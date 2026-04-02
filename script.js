@@ -1,10 +1,6 @@
 const myLibrary=[];
 const cardSection = document.querySelector("div#card-wrapper");
 
-
-
-
-
 function Book(title, author, pages, read, note) {
     this.id = crypto.randomUUID();
     this.title = title;
@@ -74,8 +70,6 @@ function updateCards() {
     checkButtons()
 }
 
-
-
 // let cardDisplay = myLibrary.slice(cardStart,cardEnd);
 const pageDisplay = document.getElementById("pageNumber");
 const previousButton = document.getElementById("previous");
@@ -115,6 +109,30 @@ function checkButtons() {
         nextButton.style.opacity = 0.3;
     }
     else nextButton.style.opacity=0.7;
+}
+
+const bookForm = document.getElementById("bookform");
+const createBookButton = document.querySelector("button#create");
+
+createBookButton.addEventListener("click", () => {
+    event.preventDefault();
+    createBookFromForm()
+}
+)
+
+function createBookFromForm() {
+    const readOrNot = function() {
+        if (bookForm.read.value==="Yes") {
+            return "read"
+        }
+        else if (bookForm.notread.value==="No") {
+            return "not read"
+        }
+    }
+    // title, author, pages, read, note
+    addBookToLibrary(bookForm.title.value, bookForm.author.value, bookForm.pages.value, readOrNot(), bookForm.note.value)
+    updateCards()
+    bookForm.reset();
 }
 
 addBookToLibrary("bob's life", "bob", "5", "read", "just trash");
