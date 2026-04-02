@@ -53,6 +53,12 @@ function updateCards() {
     pageCount=document.createElement("p");
     pageCount.textContent=`${item.pages} pages`;
     book.appendChild(pageCount)
+
+    bookNote=document.createElement("p");
+    bookNote.classList.add("note");
+    bookNote.textContent=item.note;
+    book.appendChild(bookNote);
+
     readStatus=document.createElement("p");
     readStatus.textContent=item.read;
         if (item.read==="read") {
@@ -66,7 +72,6 @@ function updateCards() {
     book.style.backgroundColor=`hsl(${item.hslAngle}, 50%, 75%)`;
     cardSection.appendChild(book);
     })
-
     checkButtons()
 }
 
@@ -74,21 +79,26 @@ function updateCards() {
 const pageDisplay = document.getElementById("pageNumber");
 const previousButton = document.getElementById("previous");
 const nextButton = document.getElementById("next");
+const pageButtons = document.getElementById("page-wrapper");
 
-previousButton.addEventListener("click", () => {
-    leftPage();
-    updatePage();
-    updateCards();
-})
-nextButton.addEventListener("click", () => {
-    rightPage();
-    updatePage(); 
-    updateCards();
+pageButtons.addEventListener("click", () => {
+    (event.target.id==="previous") ? toPreviousPage() : toNextPage();
+    
+    function toPreviousPage() {
+        leftPage();
+        updatePage();
+        updateCards();
+    }
+    function toNextPage() {
+        rightPage();
+        updatePage(); 
+        updateCards();
+    }
+    function updatePage() {
+        pageDisplay.textContent = cardPage;
+    }
 })
 
-function updatePage() {
-    pageDisplay.textContent = cardPage;
-}
 
 function rightPage() {
     if (cardPage === numberOfShelves) return;

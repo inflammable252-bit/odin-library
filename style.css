@@ -77,6 +77,9 @@ article.card {
         font-size: 0.9rem;
         font-weight: 400;
     }
+    p.note {
+        
+    }
     p:last-child {
         margin-top: auto;
     }
@@ -86,8 +89,11 @@ article.card {
     transition: transform 0.4s ease-in-out;
 }
 
-.card:hover, .card:active {
+.card:hover, .card:active, .card:focus {
         transform: scale(1.2);
+        p.note {
+            display: inline-block;
+        }
     }
 
 #page-wrapper {
