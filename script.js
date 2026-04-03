@@ -20,7 +20,7 @@ function addBookToLibrary(title, author, pages, read, note) {
 let cards;
 
 function removePreviousCards() {
-    cards = document.querySelectorAll("article.card");
+    cards = document.querySelectorAll("div.book-div");
     cards.forEach((item)=> {item.remove()});
 }
 
@@ -68,14 +68,40 @@ function updateCards() {
             readStatus.className="not-read"
         }
     book.appendChild(readStatus);
+
+    const editButtons = document.createElement("div");
+    editButtons.classList.add("edit");
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete")
+    deleteButton.textContent="x";
+    deleteButton.id=item.id;
+    editButtons.appendChild(deleteButton);
+    // book.appendChild(editButtons)
     
     book.style.backgroundColor=`hsl(${item.hslAngle}, 50%, 75%)`;
-    cardSection.appendChild(book);
-    })
-    checkButtons()
-}
+    
+    const bookDiv = document.createElement("div");
+    bookDiv.classList.add("book-div");
+    
+    bookDiv.appendChild(book);
+    bookDiv.appendChild(editButtons);
 
-// let cardDisplay = myLibrary.slice(cardStart,cardEnd);
+    cardSection.appendChild(bookDiv);
+    })
+
+    const allDeleteButtons = document.querySelectorAll("button.delete");
+    allDeleteButtons.forEach((item) => {
+        item.addEventListener("click", () => {
+            const thisBookDiv = document.querySelector("div.book-div");
+            console.log(thisBookDiv)
+            console.log(item.id)
+            })
+        })
+        
+        checkButtons()
+    }
+// const deleteBookButtons = document.querySelectorAll(".delete");
+
 const pageDisplay = document.getElementById("pageNumber");
 const previousButton = document.getElementById("previous");
 const nextButton = document.getElementById("next");

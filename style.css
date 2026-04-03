@@ -40,7 +40,7 @@ main {
     grid-template-rows: 1fr auto;
     background-color: rgb(253, 222, 236);
     border-radius: 24px;
-    margin: 10px;
+    margin: 5px;
     padding: 10px;
     justify-items: center;
     align-content: center;
@@ -52,7 +52,7 @@ div#card-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 0.5rem;
+    gap: 0.7rem;
     justify-items: center;
     align-items: center;
 }
@@ -68,6 +68,7 @@ article.card {
     align-items: center;
     text-align: center;
     padding: 15px;
+    z-index: 2;
 
     p:first-child {
         font-size: 1.8rem;
@@ -98,16 +99,22 @@ article.card {
         color: red;
     }
     transition: transform 0.4s ease-in-out;
-    z-index: 1;
 }
 
-.card:hover, .card:active, .card:focus {
+.book-div {
+    transition: transform 0.4s ease-in-out;
+}
+.book-div:hover, .book-div:active, .book-div:focus {
         transform: scale(1.2);
+        z-index: 3;
         p.note {
             position: relative;
             right: 0;
             opacity: 1;
             transition: 0.2s ease;
+        }
+        div.edit button {
+            display: inline-block;
         }
     }
 
@@ -115,6 +122,23 @@ article.card {
     position: relative;
     right: 0;
     opacity: 1;
+}
+
+div.book-div {
+   display: flex;
+   gap: 10px;
+}
+
+div.edit {
+    button {
+        color: white;
+        background-color: var(--theme-secondary);
+        font-size: 0.8rem;
+        text-align: center;
+        border-radius: 8px;
+        border: 2px outset #afafaf;
+        display: none;
+    }
 }
 
 #page-wrapper {
@@ -144,6 +168,7 @@ button#toggle-notes {
     border-style: none;
     border-radius: 8px;
     padding: 2px 14px;
+    z-index: 0;
 }
 
 section#bottom {
@@ -184,6 +209,8 @@ section#bottom {
         font-size: 2.25rem;
         background-color: var(--theme-accent);
         border-radius: 16px;
+    }
+    summary > p, button#create {
         box-shadow: 3px 3px 7px 0px #00000063;
     }
     span:nth-child(2){
@@ -191,7 +218,7 @@ section#bottom {
     }
     grid-column: -2/-1;
     padding: 10px;
-    background-color: white;
+    /* background-color: white; */
     input {
         border-radius: 12px;
         display: block;
@@ -254,7 +281,7 @@ details[open] {
         font-size: 1.25rem;
         color: white;
         padding: 5px;
-        margin: 15px 10px;
+        margin: 15px 10px 5px;
         width: 15ch;
     }
     div#midform {
