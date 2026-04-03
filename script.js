@@ -29,7 +29,7 @@ let numberOfShelves;
 
 function createShelves() {
     const myLibraryCopy = [...myLibrary];
-    numberOfShelves = Math.ceil(myLibrary.length/4);
+    numberOfShelves = (Math.ceil(myLibrary.length/4));
     for (i=1; i<=numberOfShelves; i++) {
         shelves[i] = myLibraryCopy.splice(0,4);
     }
@@ -38,8 +38,13 @@ function createShelves() {
 let cardPage = 1;
 
 function updateCards() {
+    if (cardPage>numberOfShelves) {
+        toPreviousPage();
+    }
     removePreviousCards();
+    
     let currentShelf = shelves[cardPage];
+    if (currentShelf===0) return;
     currentShelf.forEach((item) => {
     const book = document.createElement("article");
     book.classList.add("card");
@@ -74,7 +79,7 @@ function updateCards() {
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("delete")
     deleteButton.textContent="x";
-    deleteButton.id=item.id;
+    deleteButton.id = item.id;
     editButtons.appendChild(deleteButton);
     // book.appendChild(editButtons)
     
@@ -82,25 +87,47 @@ function updateCards() {
     
     const bookDiv = document.createElement("div");
     bookDiv.classList.add("book-div");
-    
+    bookDiv.id = item.id;
+
     bookDiv.appendChild(book);
     bookDiv.appendChild(editButtons);
 
     cardSection.appendChild(bookDiv);
     })
-
     const allDeleteButtons = document.querySelectorAll("button.delete");
     allDeleteButtons.forEach((item) => {
         item.addEventListener("click", () => {
-            const thisBookDiv = document.querySelector("div.book-div");
-            console.log(thisBookDiv)
-            console.log(item.id)
+            deleteBook(item.id)
             })
         })
-        
+
         checkButtons()
+
+        console.log(myLibrary)
+        console.log(shelves)
+        console.log(`# of shelves: ${numberOfShelves} / total books: ${myLibrary.length}`)
+        console.log(`Card page: ${cardPage}`)
     }
 // const deleteBookButtons = document.querySelectorAll(".delete");
+
+function deleteBook(idToDelete) {
+    console.log(idToDelete)
+    myLibrary.forEach((item) => {
+        // function findShelfLocation(item, shelf) {
+        //     if (shelves
+        // }
+        if (item.id === idToDelete) {
+            const itemIndex = myLibrary.indexOf(item);
+                
+            myLibrary.splice(itemIndex, 1);
+
+            console.log(`Deleted ${item.title}: ${item.id}`)
+            shelves.length=0;
+            createShelves();
+            updateCards();
+            }
+        })
+}
 
 const pageDisplay = document.getElementById("pageNumber");
 const previousButton = document.getElementById("previous");
@@ -120,38 +147,29 @@ pageButtons.addEventListener("click", () => {
             toggleNotes();
             break;
     }
+})
     function toPreviousPage() {
-        leftPage();
+        if (cardPage===1) return;
+        else {
+        cardPage--; 
         updatePage();
         updateCards();
+        }
     }
     function toNextPage() {
-        rightPage();
+        if (cardPage === numberOfShelves) return;
+        else {
+        cardPage++;
         updatePage(); 
         updateCards();
+        }
     }
     function updatePage() {
         pageDisplay.textContent = cardPage;
     }
     function toggleNotes() {
         cardSection.classList.toggle("toggle-notes");
-        // const allBooks = document.querySelectorAll("article.card");
-        // allBooks.forEach((card) => {
-        //     card.classList.toggle("show-note");
-        // })
     }
-})
-
-
-function rightPage() {
-    if (cardPage === numberOfShelves) return;
-    else cardPage++
-}
-
-function leftPage() {
-    if (cardPage===1) return;
-    else cardPage--;  
-}
 
 function checkButtons() {
     if (cardPage===1) {
@@ -188,12 +206,11 @@ function createBookFromForm() {
     bookForm.reset();
 }
 
-addBookToLibrary("bob's life", "bob", "5", "read", "just trash");
-addBookToLibrary("Rob's Odyssey", "Robert", "6", "read", "still trash");
-addBookToLibrary("Placeholder", "Place Holder", "1213", "not read", "what");
-addBookToLibrary("Placeholding", "Place Holder", "5678", "not read", "reconsidering");
-addBookToLibrary("Placeholded", "Place Holder", "2", "not read", "wouldn't take long");
-console.log(myLibrary)
+addBookToLibrary("1", "bob", "5", "read", "just trash");
+addBookToLibrary("2", "Robert", "6", "read", "still trash");
+addBookToLibrary("3", "Place Holder", "1213", "not read", "what");
+addBookToLibrary("4", "Place Holder", "5678", "not read", "reconsidering");
+addBookToLibrary("5", "Place Holder", "2", "not read", "wouldn't take long");
 updateCards()
 
 
