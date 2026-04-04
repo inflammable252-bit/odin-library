@@ -47,6 +47,7 @@ main {
     box-shadow: 3px 3.5px 15px 0px #00000063;
 }
 div#card-wrapper {
+    padding: 0 4rem;
     min-height: 93%;
     width: 100%;
     display: grid;
@@ -68,7 +69,6 @@ article.card {
     align-items: center;
     text-align: center;
     padding: 15px;
-    z-index: 2;
 
     p:first-child {
         font-size: 1.8rem;
@@ -103,6 +103,7 @@ article.card {
 
 .book-div {
     transition: transform 0.4s ease-in-out;
+    z-index: 2;
 }
 .book-div:hover, .book-div:active, .book-div:focus {
         transform: scale(1.2);
@@ -113,8 +114,9 @@ article.card {
             opacity: 1;
             transition: 0.2s ease;
         }
-        div.edit button {
-            display: inline-block;
+        div.edit {
+            display: flex;
+            flex-direction: column;
         }
     }
 
@@ -126,19 +128,61 @@ article.card {
 
 div.book-div {
    display: flex;
-   gap: 10px;
+   gap: 3px;
 }
 
 div.edit {
+    display: none;
+    position: absolute;
+    right: 0;
+    padding: 5px;
+    gap: 2px;
     button {
         color: white;
-        background-color: var(--theme-secondary);
+        background-color: #0000003b;
         font-size: 0.8rem;
-        text-align: center;
         border-radius: 8px;
-        border: 2px outset #afafaf;
-        display: none;
+        border: 0 solid #afafaf;
+        height: 30px;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+    button.read {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    button img {
+        height: 18px;
+        min-width: 18px;
+    }
+    button:hover img {
+        height: 19px;
+        min-width: 19px;
+    }
+    button.delete img {
+        height: 13px;
+        min-width: 13px;
+    }
+    button:hover.delete img {
+        height: 15px;
+        min-width: 15px;
+    }
+    button:hover {
+        background-color: #cccccc0e;
+        border: 2px solid #ffffff59;
+    }
+    button:active {
+        border-radius: 40%;
+        background-color: #ffffff52;
+        transition: 0.25s;
+    }
+    button.delete:hover {
+        border-color: #ff000041;
+    }
+
 }
 
 #page-wrapper {

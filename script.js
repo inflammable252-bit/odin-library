@@ -78,10 +78,19 @@ function updateCards() {
     editButtons.classList.add("edit");
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("delete")
-    deleteButton.textContent="x";
+    const xIcon = document.createElement("img");
+    xIcon.src = "./cross-svgrepo-com.png";
+    deleteButton.append(xIcon);
     deleteButton.id = item.id;
+    const readButton = document.createElement("button");
+    readButton.classList.add("read");
+    readButton.id = item.id;
+    const readIcon = document.createElement("img");
+    readIcon.src = "./book-open-svgrepo-com.png";
+    readButton.append(readIcon);
+
     editButtons.appendChild(deleteButton);
-    // book.appendChild(editButtons)
+    editButtons.appendChild(readButton)
     
     book.style.backgroundColor=`hsl(${item.hslAngle}, 50%, 75%)`;
     
