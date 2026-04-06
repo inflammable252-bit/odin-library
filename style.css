@@ -285,7 +285,7 @@ details[open] {
     p {
         display: inline-block;
         font-size: 1.25rem;
-        padding: 5px;
+        padding: 0 5px;
         width: 34ch;
         text-align: center;
         opacity: 100%;
@@ -314,6 +314,9 @@ details[open] {
     }
     input#read {
         display: inline-block;
+    }
+    p#read-label {
+        padding-right: 0;
     }
     label[for="note"] {
         display: block;
@@ -354,5 +357,11 @@ details[open] {
                 grid-row: span 2;
             }
         }
+    }
+}
+
+form#bookform {
+    input:user-invalid {
+        outline: 2px solid #ff23657e;
     }
 }

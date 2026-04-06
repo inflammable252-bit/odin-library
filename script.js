@@ -61,7 +61,7 @@ function updateCards() {
 
     bookNote=document.createElement("p");
     bookNote.classList.add("note");
-    bookNote.textContent=`"${item.note}"`;
+    if (item.note) {bookNote.textContent=`"${item.note}"`};
     book.appendChild(bookNote);
 
     readStatus=document.createElement("p");
@@ -220,17 +220,19 @@ const createBookButton = document.querySelector("button#create");
 
 createBookButton.addEventListener("click", () => {
     event.preventDefault();
+    if (bookForm.title.value, bookForm.author.value, bookForm.pages.value) {
     createBookFromForm()
+    }
 }
 )
 
 function createBookFromForm() {
     const readOrNot = function() {
         if (bookForm.read.value==="Yes") {
-            return "Read"
+            return "read"
         }
-        else if (bookForm.notread.value==="No") {
-            return "Not read"
+        else if (bookForm.read.value==="No") {
+            return "not read"
         }
     }
     // title, author, pages, read, note
