@@ -95,7 +95,10 @@ article.card {
     p:last-child {
         margin-top: auto;
     }
-    p.not-read {
+    p.read {
+        color: #000;
+    }
+    p.notRead {
         color: red;
     }
     transition: transform 0.4s ease-in-out;

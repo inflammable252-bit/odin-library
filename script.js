@@ -67,10 +67,12 @@ function updateCards() {
     readStatus=document.createElement("p");
     readStatus.textContent=item.read;
         if (item.read==="read") {
-            readStatus.className==="read";
+            readStatus.textContent="Read"
+            readStatus.className="read";
         }
         else {
-            readStatus.className="not-read"
+            readStatus.textContent="Not read"
+            readStatus.className="notRead"
         }
     book.appendChild(readStatus);
 
@@ -109,33 +111,55 @@ function updateCards() {
             deleteBook(item.id)
             })
         })
-
         checkButtons()
-
         console.log(myLibrary)
         console.log(shelves)
         console.log(`# of shelves: ${numberOfShelves} / total books: ${myLibrary.length}`)
         console.log(`Card page: ${cardPage}`)
-    }
-// const deleteBookButtons = document.querySelectorAll(".delete");
+
+    const allReadButtons = document.querySelectorAll("button.read");
+    allReadButtons.forEach((item) => {
+        item.addEventListener("click", (e) => {
+        idToToggle = item.id;
+        updateReadInLibrary(item.id);
+        const readStatusParentCard = e.currentTarget.parentElement.parentElement;
+        readTextInCard = readStatusParentCard.querySelector("p:last-child");
+        readTextInCard.className = readTextInCard.className === "read" ? "notRead" : "read";
+        readTextInCard.textContent = readTextInCard.textContent === "Read" ? "Not read" : "Read";
+        })
+    })
+
+    checkButtons()
+
+    console.log(myLibrary)
+    console.log(shelves)
+    console.log(`# of shelves: ${numberOfShelves} / total books: ${myLibrary.length}`)
+    console.log(`Card page: ${cardPage}`)
+}
 
 function deleteBook(idToDelete) {
     console.log(idToDelete)
     myLibrary.forEach((item) => {
-        // function findShelfLocation(item, shelf) {
-        //     if (shelves
-        // }
         if (item.id === idToDelete) {
             const itemIndex = myLibrary.indexOf(item);
-                
             myLibrary.splice(itemIndex, 1);
-
             console.log(`Deleted ${item.title}: ${item.id}`)
             shelves.length=0;
             createShelves();
             updateCards();
             }
         })
+}
+
+function updateReadInLibrary(idToToggle) {
+    console.log(idToToggle)
+    myLibrary.forEach((item) => {
+        if (item.id === idToToggle) {
+            item.read === "read" ? item.read ="not read" : item.read = "read";
+            console.log(`${item.title} read status changed to "${item.read}"`);
+            return objReadStatus = item.read;
+        }
+    })
 }
 
 const pageDisplay = document.getElementById("pageNumber");
@@ -203,10 +227,10 @@ createBookButton.addEventListener("click", () => {
 function createBookFromForm() {
     const readOrNot = function() {
         if (bookForm.read.value==="Yes") {
-            return "read"
+            return "Read"
         }
         else if (bookForm.notread.value==="No") {
-            return "not read"
+            return "Not read"
         }
     }
     // title, author, pages, read, note
@@ -221,5 +245,3 @@ addBookToLibrary("3", "Place Holder", "1213", "not read", "what");
 addBookToLibrary("4", "Place Holder", "5678", "not read", "reconsidering");
 addBookToLibrary("5", "Place Holder", "2", "not read", "wouldn't take long");
 updateCards()
-
-
