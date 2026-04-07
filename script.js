@@ -9,7 +9,12 @@ function Book(title, author, pages, read, note) {
     this.read = read;
     this.note = note;
     this.hslAngle= Math.floor(Math.random()*361);
-    this.info = `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}. Note: "${note}". ID: ${this.id}`
+    this.info = `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}. Note: "${note}". ID: ${this.id}`;
+
+    this.updateReadInLibrary = function() {
+        this.read === "read" ? this.read ="not read" : this.read = "read";
+        console.log(`${this.title} read status changed to "${this.read}"`)
+    }
 }
 function addBookToLibrary(title, author, pages, read, note) {
     const newBook = new Book(title, author, pages, read, note);
@@ -121,7 +126,15 @@ function updateCards() {
     allReadButtons.forEach((item) => {
         item.addEventListener("click", (e) => {
         idToToggle = item.id;
-        updateReadInLibrary(item.id);
+        function linkIDtoLibrary(id) {
+            myLibrary.forEach((book) => {
+                if (book.id===id) {
+                    return libraryItem = book
+                    } 
+                })
+            }
+        linkIDtoLibrary(idToToggle)
+        libraryItem.updateReadInLibrary();
         const readStatusParentCard = e.currentTarget.parentElement.parentElement;
         readTextInCard = readStatusParentCard.querySelector("p:last-child");
         readTextInCard.className = readTextInCard.className === "read" ? "notRead" : "read";
@@ -149,17 +162,6 @@ function deleteBook(idToDelete) {
             updateCards();
             }
         })
-}
-
-function updateReadInLibrary(idToToggle) {
-    console.log(idToToggle)
-    myLibrary.forEach((item) => {
-        if (item.id === idToToggle) {
-            item.read === "read" ? item.read ="not read" : item.read = "read";
-            console.log(`${item.title} read status changed to "${item.read}"`);
-            return objReadStatus = item.read;
-        }
-    })
 }
 
 const pageDisplay = document.getElementById("pageNumber");
