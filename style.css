@@ -222,6 +222,16 @@ section#bottom {
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 0.15fr 0.75fr 1.25fr;
+    button {
+        transition: 0.3s;
+    }
+    button:active {
+        position: relative;
+        top: 2px;
+        left: 2px;
+        box-shadow: 0px 0px 9px 4px #80f9b0ea;
+        transition: 0.5s;
+    }
 }
 
 #bottom-left {
@@ -267,7 +277,7 @@ section#bottom {
     padding: 10px;
     /* background-color: white; */
     input {
-        border-radius: 12px;
+        border-radius: 8px;
         display: block;
     }
 }
@@ -361,7 +371,17 @@ details[open] {
 }
 
 form#bookform {
+    input {
+        background-color: rgba(206, 206, 206, 0.253);
+        border: 1px solid rgba(131, 131, 131, 0.349);
+    }
+    input:user-valid {
+        outline: 1.5px solid rgba(0, 255, 34, 0.329);
+    }
     input:user-invalid {
-        outline: 2px solid #ff23657e;
+        outline: 1px solid #ff238a7e;
+    }
+    input:focus {
+        outline: 1px solid rgba(0, 0, 0, 0.541);
     }
 }
