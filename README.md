@@ -17,11 +17,9 @@ Page behavior is based on the cardPage variable. It increments and decrements as
 
 Similar to other curriculum projects, additional concepts are explored:
 
--A "Toggle notes" button shows notes on all books via CSS rules and an event listener that applies or removes a class to the card-wrapper section.
-
--Animation is used in some elements. Namely, the growth of the active or hovered card. Book notes also "sweep" into the frame. The edit buttons on each book also transition shape on press.
-
--The form used to add a new book is in placed in a details drawer.
+- A "Toggle notes" button shows notes on all books via CSS rules and an event listener that applies or removes a class to the card-wrapper section.
+- Animation is used in some elements. Namely, the growth of the active or hovered card. Book notes also "sweep" into the frame. The edit buttons on each book also transition shape on press.
+- The form used to add a new book is in placed in a details drawer.
 
 ![Drawer preview](preview2.png)
 *Clicking "Add Book" opens an animated drawer*
@@ -30,11 +28,11 @@ Similar to other curriculum projects, additional concepts are explored:
 
 The existing structure of this project could be expanded to include the following features:
 
--Local storage
--Function to update individual cards / book objects vs refreshing entire array
--Add additional buttons on each book to edit existing book properties, such as color and note.
--Search feature: add functions to search the shelf array for matching properties, display the shelf containing the matching books, and make the matching cases active (book expands).
--A table view of properties to easily edit notes.
--Add "hashtag"-style properties to books
--Creation of lists and custom views
--Customization and themes
+- Local storage
+- Function to update individual cards / book objects vs refreshing entire array
+- Add additional buttons on each book to edit existing book properties, such as color and note.
+- Search feature: add functions to search the shelf array for matching properties, display the shelf containing the matching books, and make the matching cases active (book expands).
+- A table view of properties to easily edit notes.
+- Add "hashtag"-style properties to books
+- Creation of lists and custom views
+- Customization and themes
