@@ -116,11 +116,6 @@ function updateCards() {
             deleteBook(item.id)
             })
         })
-        checkButtons()
-        console.log(myLibrary)
-        console.log(shelves)
-        console.log(`# of shelves: ${numberOfShelves} / total books: ${myLibrary.length}`)
-        console.log(`Card page: ${cardPage}`)
 
     const allReadButtons = document.querySelectorAll("button.read");
     allReadButtons.forEach((item) => {
@@ -170,8 +165,8 @@ const nextButton = document.getElementById("next");
 const pageButtons = document.getElementById("page-wrapper");
 const noteToggle = document.getElementById("toggle-notes")
 
-pageButtons.addEventListener("click", () => {
-    switch (event.target.id) {
+pageButtons.addEventListener("click", (e) => {
+    switch (e.target.id) {
         case "previous":
             toPreviousPage();
             break
@@ -220,8 +215,8 @@ function checkButtons() {
 const bookForm = document.getElementById("bookform");
 const createBookButton = document.querySelector("button#create");
 
-createBookButton.addEventListener("click", () => {
-    event.preventDefault();
+createBookButton.addEventListener("click", (e) => {
+    e.preventDefault();
     if (bookForm.title.value, bookForm.author.value, bookForm.pages.value) {
     createBookFromForm()
     }
@@ -243,9 +238,13 @@ function createBookFromForm() {
     bookForm.reset();
 }
 
-addBookToLibrary("1", "bob", "5", "read", "just trash");
-addBookToLibrary("2", "Robert", "6", "read", "still trash");
-addBookToLibrary("3", "Place Holder", "1213", "not read", "what");
-addBookToLibrary("4", "Place Holder", "5678", "not read", "reconsidering");
-addBookToLibrary("5", "Place Holder", "2", "not read", "wouldn't take long");
+function addDemoBooks() {
+addBookToLibrary("Everyman", "Philip Roth", "182", "read", "Devastating. Recommend highly.");
+addBookToLibrary("Eloquent Javascript", "Marjin Haverbeke", "456", "not read", "Currently reading!");
+addBookToLibrary("Finnegans Wake", "James Joyce", "638", "not read", "Confusing and experimental narrative. Reconsidering.");
+addBookToLibrary("To The Lighthouse", "Virginia Woolf", "209", "read", "");
+addBookToLibrary("Il Canzoniere", "Francesco Petrarch", "800", "read", "Reminder: review analyses for poems on marked pages.");
+}
+
+addDemoBooks()
 updateCards()

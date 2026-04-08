@@ -72,12 +72,14 @@ header {
 
 header h1 {
     font-family: var(--header-font);
-    font-size: 2.6rem;
-    letter-spacing: 0.2ch;
-    padding: 0px 10px;
+    font-size: 3rem;
+    font-weight: 1000;
+    letter-spacing: 0.15ch;
+    margin-top: 0.5rem;
+    padding: 0px 12px;
     border-radius: 8px;
     background: #9efff4;
-    background: linear-gradient(90deg, rgba(119, 255, 203, 0.527) 83%, rgba(255, 255, 255, 1) 100%);
+    background: linear-gradient(90deg, rgba(119, 255, 203, 0.685) 65%, rgba(255, 255, 255, 1) 100%);
 }
 header .search-wrapper {
     width: 34ch;
@@ -112,7 +114,7 @@ main {
     border-radius: 24px;
     margin: 5px;
     padding: 10px;
-    box-shadow: 7px 6px 9px 0px #00000031;
+    box-shadow: 5px 3px 10px 2px #00000031;
 }
 div#card-wrapper {
     padding: 0 4rem;
@@ -126,7 +128,7 @@ div#card-wrapper {
     align-items: center;
 }
 article.card {
-    border: 2.5px solid #00000021;
+    border: 2px solid #00000013;
     box-shadow: 3px 3px 9px 0px #0000005d;
     border-radius: 6px;
     height: 260px;
@@ -136,29 +138,39 @@ article.card {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 15px;
+    padding: 10px;
+    font-family: var(--header-font);
+    letter-spacing: -1.4px;
 
     p:first-child {
-        font-size: 1.8rem;
-        font-weight: 800;
+        font-size: 1.6rem;
+        font-weight: 700;
         line-height: 1.25;
-        padding-bottom: 0.6rem;
+        padding-bottom: 0.1rem;
     }
     p:nth-child(2) {
-        font-size: 1.4rem;
-        font-weight: 600;
+        color: #000000a8;
+        font-size: 1.2rem;
+        font-weight: 450;
     }
     p:nth-child(3) {
+        color: #1f1f1fb7;        
         font-size: 0.9rem;
-        font-weight: 400;
+        font-weight: normal;
     }
     p.note {
+        font-size: 1rem;
+        max-width: 100%;
+        max-height: 50%;
+        overflow: auto;
         opacity: 0;
         position: relative;
         right: -75px;
         color: #3f3f3f;
         margin-top: auto;
         transition: 0.2s ease;
+        scrollbar-width: thin;
+        scrollbar-color: #ffffffc5 #00000028;
     }
     p:last-child {
         margin-top: auto;
@@ -167,7 +179,7 @@ article.card {
         color: #000;
     }
     p.notRead {
-        color: red;
+        color: #c91c47;
     }
     transition: transform 0.4s ease-in-out;
 }
@@ -382,7 +394,6 @@ details[open] {
 }
 
 .add-drawer form {
-    padding: 10px;
     input {
         margin: 5px;
     }
