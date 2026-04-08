@@ -2,21 +2,51 @@
     --theme-core: rgb(59, 61, 180);
     --theme-secondary: rgb(175, 65, 175);
     --theme-accent: rgb(241, 100, 119);
+    --input-bg: #cecece41;
+    --header-font: Cousine, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
 
 }
 
-* {
-    /* border: 1px solid gray; */
+@font-face {
+    font-family: 'Cousine';
+    src: url('Cousine-BoldItalic.woff2') format('woff2'),
+        url('Cousine-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
 }
 
-
-nav {
-    /* background-color: var(--theme-secondary); */
+@font-face {
+    font-family: 'Cousine';
+    src: url('./fonts/Cousine-Italic.woff2') format('woff2'),
+        url('./fonts/Cousine-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
 }
+
+@font-face {
+    font-family: 'Cousine';
+    src: url('./fonts/Cousine-Bold.woff2') format('woff2'),
+        url('./fonts/Cousine-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cousine';
+    src: url('./fonts/Cousine-Regular.woff2') format('woff2'),
+        url('./fonts/Cousine-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 
 body {
     height: 100vh;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     display: grid;
     grid-template-columns: 0.5fr 1fr 1fr;
 }
@@ -31,9 +61,49 @@ div.mobile-frame {
     border-radius: 16px;
     display: grid;
     grid-template-rows: [top] minmax(auto, 0.5fr) [card-start] 2.75fr [card-end] 1fr;
+    
 }
 header {
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header h1 {
+    font-family: var(--header-font);
+    font-size: 2.6rem;
+    letter-spacing: 0.2ch;
+    padding: 0px 10px;
+    border-radius: 8px;
+    background: #9efff4;
+    background: linear-gradient(90deg, rgba(119, 255, 203, 0.527) 83%, rgba(255, 255, 255, 1) 100%);
+}
+header .search-wrapper {
+    width: 34ch;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+header img#search-icon {
+    position: absolute;
+    height: 2ch;
+    min-width: 2ch;
+    padding-left: 1ch;
+}
+header #searchbar {
+    padding: 0.4ch 1ch 0.4ch 4ch;
+    width: 100%;
+    border-radius: 12px;
+    background-color: var(--input-bg);
+    border: 1.8px solid #64646450;
+}
+
+input#searchbar:active, input#searchbar:focus {
+    border-color: #00000069;
+}
+input#searchbar:focus-visible {
+    outline: 1px solid #4a47ff46;
 }
 main {
     display: grid;
@@ -42,9 +112,7 @@ main {
     border-radius: 24px;
     margin: 5px;
     padding: 10px;
-    justify-items: center;
-    align-content: center;
-    box-shadow: 3px 3.5px 15px 0px #00000063;
+    box-shadow: 7px 6px 9px 0px #00000031;
 }
 div#card-wrapper {
     padding: 0 4rem;
@@ -128,12 +196,10 @@ article.card {
     right: 0;
     opacity: 1;
 }
-
 div.book-div {
    display: flex;
    gap: 3px;
 }
-
 div.edit {
     display: none;
     position: absolute;
@@ -190,14 +256,22 @@ div.edit {
 
 #page-wrapper {
     height:fit-content;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    width: 100%;
     margin: 6px;
     #previous {
         transform: rotate(180deg);
     }
+    div#number-wrapper {
+        grid-column: 2/3;
+        display: flex;
+        flex-direction: row;
+    }
     #pageNumber {
+        padding-top: 1px;
         margin: 0px 14px;
         font-size: 1.2rem;
     }
@@ -206,10 +280,8 @@ div.edit {
         width: 25px;
     }
 }
-
 button#toggle-notes {
-    position: absolute;
-    left: 65%;
+    grid-column: -1/-2;
     background-color: var(--theme-accent);
     color: #FFF;
     border-style: none;
@@ -229,8 +301,8 @@ section#bottom {
         position: relative;
         top: 2px;
         left: 2px;
-        box-shadow: 0px 0px 9px 4px #80f9b0ea;
-        transition: 0.5s;
+        box-shadow: 0px 0px 9px 4px #ff8df9de;
+        transition: 0.25s;
     }
 }
 
@@ -344,6 +416,9 @@ details[open] {
         margin: 15px 10px 5px;
         width: 15ch;
     }
+    button#create:active {
+        box-shadow: 0px 1px 9px 5px #4acc609f;
+    }
     div#midform {
         display: grid;
         grid-template-columns: repeat(3, min-content);
@@ -372,7 +447,7 @@ details[open] {
 
 form#bookform {
     input {
-        background-color: rgba(206, 206, 206, 0.253);
+        background-color: var(--input-bg);
         border: 1px solid rgba(131, 131, 131, 0.349);
     }
     input:user-valid {
@@ -384,4 +459,8 @@ form#bookform {
     input:focus {
         outline: 1px solid rgba(0, 0, 0, 0.541);
     }
+}
+
+button, summary p span, div#pageNumber {
+    font-family: var(--header-font);
 }

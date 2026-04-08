@@ -11,19 +11,22 @@
 <body>
     <div class="mobile-frame">
     <header>
-            <h1> Odin Library Notes</h1>
-            <nav>
-                <input type="search" name="searchbar" id="searchbar">
-            </nav>
+        <h1> Odin Book Tracker</h1>
+            <div class="search-wrapper">
+                    <img src="magnifying-glass-11-svgrepo-com.png" alt="Search icon" id="search-icon">
+                    <input type="search" name="searchbar" id="searchbar">
+            </div>
         </header>
         <main>
             <div id="card-wrapper">
                 <!-- <article class="card"></article> -->
             </div>
             <div id="page-wrapper">
-                <img src="./next-svgrepo-com.png" alt="Previous" id="previous">
-                <div id="pageNumber">1</div>
-                <img src="./next-svgrepo-com.png" alt="Next" id="next">
+                <div id="number-wrapper">
+                    <img src="./next-svgrepo-com.png" alt="Previous" id="previous">
+                    <div id="pageNumber">1</div>
+                    <img src="./next-svgrepo-com.png" alt="Next" id="next">
+                </div>
                 <button type="button" id="toggle-notes">Toggle notes</button>
             </div>
         </main>
