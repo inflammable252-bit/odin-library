@@ -475,3 +475,27 @@ form#bookform {
 button, summary p span, div#pageNumber {
     font-family: var(--header-font);
 }
+
+
+/* Firefox details element fix */
+@-moz-document url-prefix() {
+    details {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    details summary p {
+        width: max-content;
+    }
+
+    details form {
+        height: 0px;
+    }
+
+    details[open] form {
+        height: min-content;
+    }
+}
