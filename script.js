@@ -1,19 +1,21 @@
 const myLibrary=[];
 const cardSection = document.querySelector("div#card-wrapper");
 
-function Book(title, author, pages, read, note) {
-    this.id = crypto.randomUUID();
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.note = note;
-    this.hslAngle= Math.floor(Math.random()*361);
-    this.info = `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}. Note: "${note}". ID: ${this.id}`;
+class Book {
+    constructor(title, author, pages, read, note) {
+        this.id = crypto.randomUUID();
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.note = note;
+        this.hslAngle= Math.floor(Math.random()*361);
+        this.info = `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}. Note: "${note}". ID: ${this.id}`;
 
-    this.updateReadInLibrary = function() {
-        this.read === "read" ? this.read ="not read" : this.read = "read";
-        console.log(`${this.title} read status changed to "${this.read}"`)
+        this.updateReadInLibrary = function() {
+            this.read === "read" ? this.read ="not read" : this.read = "read";
+            console.log(`${this.title} read status changed to "${this.read}"`)
+        }
     }
 }
 function addBookToLibrary(title, author, pages, read, note) {
