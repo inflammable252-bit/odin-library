@@ -464,6 +464,9 @@ form#bookform {
     input:user-valid {
         outline: 1.5px solid rgba(0, 255, 34, 0.329);
     }
+    input#note:user-valid {
+        outline: none;
+    }
     input:user-invalid {
         outline: 1px solid #ff238a7e;
     }
@@ -475,7 +478,6 @@ form#bookform {
 button, summary p span, div#pageNumber {
     font-family: var(--header-font);
 }
-
 
 /* Firefox details element fix */
 @-moz-document url-prefix() {
